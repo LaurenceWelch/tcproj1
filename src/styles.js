@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     padding: 10,
     color: 'dodgerblue',
   },
+  header: {fontSize: 22, margin: 10, textAlign: 'center'},
 });
 
 export default styles;

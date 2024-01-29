@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import {View, Text, FlatList, TouchableOpacity, Button} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import AddRecord from '../../components/AddRecord';
 import ResultRow from '../../components/ResultRow';
-import styles from './styles';
 import gs from '../../styles';
 
 const HomeScreen = props => {

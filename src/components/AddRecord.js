@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {
   SafeAreaView,
-  TextInput,
   View,
   Text,
   Modal,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import MyTextInput from './MyTextInput';
+import MyHeader from './MyHeader';
 import gs from '../styles';
 
 const AddRecord = props => {
@@ -28,36 +29,30 @@ const AddRecord = props => {
       onDismiss={() => clearInput()}
       animationType={'slide'}>
       <SafeAreaView>
-        <View style={styles}>
-          <TextInput
-            style={styles.input}
-            value={title}
-            placeholder={'name'}
-            onChangeText={val => setTitle(val)}
-          />
-        </View>
-        <View>
-          <TextInput
-            style={styles.input}
-            multiline={true}
-            value={notes}
-            placeholder={'notes'}
-            onChangeText={val => setNotes(val)}
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <TouchableOpacity onPress={() => props.close()} style={{margin: 10}}>
+        <MyHeader>New Note</MyHeader>
+        <MyTextInput
+          placeholder={'title'}
+          val={title}
+          multiline={false}
+          setVal={val => {
+            setTitle(val);
+          }}
+        />
+        <MyTextInput
+          placeholder={'notes'}
+          val={notes}
+          multiline={true}
+          setVal={val => setNotes(val)}
+        />
+        <View style={styles.buttons}>
+          <TouchableOpacity onPress={() => props.close()} style={gs.button}>
             <Text style={gs.button}>cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            style={gs.button}
             onPress={() => {
-              props.submit({title: title, tags: tags, notes: notes}),
-                props.close();
+              props.submit({title: title, tags: tags, notes: notes});
+              props.close();
             }}>
             <Text style={gs.button}>submit</Text>
           </TouchableOpacity>
@@ -70,5 +65,9 @@ const AddRecord = props => {
 export default AddRecord;
 
 const styles = StyleSheet.create({
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   input: {fontSize: 20, margin: 10},
 });

@@ -2,7 +2,11 @@ import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
+import MyHeader from '../../components/MyHeader';
+import MyText from '../../components/MyText';
 import gs from '../../styles';
+
+const centerIt = {textAlign: 'center'};
 
 const DetailsScreen = ({route}) => {
   const navigation = useNavigation();
@@ -10,10 +14,10 @@ const DetailsScreen = ({route}) => {
   return (
     <SafeAreaView>
       <View>
-        <Text style={styles.header}>{title}</Text>
-        <Text style={styles.content}>{notes}</Text>
+        <MyHeader>{title}</MyHeader>
+        <MyText style={styles.content}>{notes}</MyText>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={gs.button}>{'< Back'}</Text>
+          <Text style={[gs.button, centerIt]}>{'< Back'}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

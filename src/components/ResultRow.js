@@ -19,5 +19,5 @@ export default ResultRow;
 
 const styles = StyleSheet.create({
   prefix: {color: 'green'},
-  item: {fontSize: 20, margin: 4},
+  item: {fontSize: 18, margin: 6},
 });
